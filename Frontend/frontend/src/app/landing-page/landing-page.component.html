@@ -1,0 +1,25 @@
+<div class="container">
+    <h1>LOGIN FORM</h1>
+
+    <div class="cards-container">
+        <div class="cards-form">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="csno">Customer Numer</label>
+                    <input type="text" name="csno" formControlName="csno">
+                    <div *ngIf="loginForm.controls['csno'].invalid && (loginForm.controls['csno'].dirty || loginForm.controls['csno'].touched)" class="alert">
+                        <p class="text-danger" *ngIf="loginForm.controls['csno'].errors?.['required']">
+                        This is a required field
+                        </p>
+                      <p class="text-danger" *ngIf="loginForm.controls['csno'].errors?.['pattern']">
+                        This field accepts numbers only
+                      </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" [disabled]="!loginForm.valid">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
